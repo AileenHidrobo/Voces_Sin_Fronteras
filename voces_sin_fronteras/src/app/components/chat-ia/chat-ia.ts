@@ -53,7 +53,14 @@ export class ChatIa {
         this.messagesContainer.nativeElement.scrollTop =
           this.messagesContainer.nativeElement.scrollHeight;
       }
-    }, 50);
+    }, 80);
+  }
+
+  cleanAnswer(text: string): string {
+    return text
+      .replace(/\*\*/g, '')
+      .replace(/\*/g, '')
+      .trim();
   }
 
   async sendMessage() {
@@ -85,9 +92,13 @@ export class ChatIa {
 
       this.messages = this.messages.filter(message => message.sender !== 'typing');
 
+      const answer = this.cleanAnswer(
+        response.answer || 'No pude generar una respuesta.'
+      );
+
       this.messages.push({
         sender: 'bot',
-        text: response.answer || 'No pude generar una respuesta.'
+        text: answer
       });
 
       this.updateView();
@@ -97,7 +108,7 @@ export class ChatIa {
 
       this.messages.push({
         sender: 'bot',
-        text: 'No pude obtener respuesta de la IA. Revisa la conexión con la API.'
+        text: 'No pude obtener respuesta de la IA. Intenta nuevamente en unos segundos.'
       });
 
       this.updateView();
