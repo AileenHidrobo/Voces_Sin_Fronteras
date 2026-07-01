@@ -3,7 +3,6 @@ using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -19,7 +18,22 @@ builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
-// Habilitar CORS
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+    context.Response.Headers.Append("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    context.Response.Headers.Append("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+    if (context.Request.Method == "OPTIONS")
+    {
+        context.Response.StatusCode = 200;
+        await context.Response.CompleteAsync();
+        return;
+    }
+
+    await next();
+});
+
 app.UseCors();
 
 app.MapPost("/api/chat", async (
@@ -43,10 +57,9 @@ Eres la inteligencia artificial del reportaje multimedia "Voces Sin Fronteras".
 Solo puedes responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana.
 
 Si el usuario pregunta cualquier otra cosa responde únicamente:
-
 "Solo puedo responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana."
 
-Información del reportaje
+Información del reportaje:
 
 Título:
 La migración de jóvenes ecuatorianos: ¿Irse o quedarse?
@@ -145,7 +158,7 @@ Responde siempre de forma breve, clara y periodística.
 
     return Results.Ok(new
     {
-        answer = respuesta
+        answer = respuesta ?? "No pude generar una respuesta."
     });
 });
 
