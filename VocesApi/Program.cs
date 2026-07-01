@@ -128,7 +128,7 @@ Responde siempre de forma breve, clara y periodística.
     var client = httpClientFactory.CreateClient();
 
     var url =
-        $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={apiKey}";
+        $"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={apiKey}";
 
     var response = await client.PostAsync(
         url,
@@ -141,10 +141,14 @@ Responde siempre de forma breve, clara y periodística.
 
     if (!response.IsSuccessStatusCode)
     {
-        return Results.BadRequest(new
-        {
-            answer = json
-        });
+    Console.WriteLine("===== ERROR GEMINI =====");
+    Console.WriteLine(json);
+    Console.WriteLine("========================");
+
+    return Results.BadRequest(new
+    {
+        answer = json
+    });
     }
 
     using var document = JsonDocument.Parse(json);
