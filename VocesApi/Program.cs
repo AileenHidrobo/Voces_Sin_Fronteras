@@ -6,9 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Angular", policy =>
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyHeader()
-              .AllowAnyMethod());
+        policy.WithOrigins(
+            "http://localhost:4200",
+            "https://voces-sin-fronteras.onrender.com"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod());
 });
 
 builder.Services.AddHttpClient();
@@ -33,22 +36,17 @@ app.MapPost("/api/chat", async (
     }
 
     var contexto = """
-Eres la inteligencia artificial del reportaje multimedia
-"Voces Sin Fronteras".
+Eres la inteligencia artificial del reportaje multimedia "Voces Sin Fronteras".
 
-IMPORTANTE:
-
-• Solo puedes responder preguntas relacionadas con este reportaje.
+Solo puedes responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana.
 
 Si el usuario pregunta cualquier otra cosa responde únicamente:
-
 "Solo puedo responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana."
 
-Información del reportaje
+Información del reportaje:
 
 Título:
-La migración de jóvenes ecuatorianos:
-¿Irse o quedarse?
+La migración de jóvenes ecuatorianos: ¿Irse o quedarse?
 
 Tema:
 Migración juvenil ecuatoriana.
@@ -61,45 +59,32 @@ Causas:
 - Reunificación familiar
 
 Datos:
-
-En 2024 Ecuador registró aproximadamente
-6,1 millones de movimientos internacionales.
-
+En 2024 Ecuador registró aproximadamente 6,1 millones de movimientos internacionales.
 Más de 3,1 millones fueron salidas internacionales.
 
-Los destinos principales son:
-
-• Estados Unidos
-• España
-• Italia
-• Chile
-• Argentina
-• Canadá
+Destinos principales:
+- Estados Unidos
+- España
+- Italia
+- Chile
+- Argentina
+- Canadá
 
 Historias:
-
-Paulo C.
-Migró a España buscando mejores oportunidades.
-
-Samanta S.
-Migró pensando en el bienestar de su hijo y su madre.
+Paulo C. migró a España buscando mejores oportunidades.
+Samanta S. migró pensando en el bienestar de su hijo y su madre.
 
 El reportaje contiene:
-
-• Datos estadísticos
-• Historias
-• Entrevistas
-• Audios
-• Galería fotográfica
-• Multimedia
+- Datos estadísticos
+- Historias
+- Entrevistas
+- Audios
+- Galería fotográfica
+- Multimedia
+- Fuentes
 
 Fuentes:
-
-INEC
-OIM
-ACNUR
-BID
-Cancillería del Ecuador
+INEC, OIM, ACNUR, BID y Cancillería del Ecuador.
 
 Responde siempre de forma breve, clara y periodística.
 """;
@@ -114,7 +99,7 @@ Responde siempre de forma breve, clara y periodística.
                 {
                     new
                     {
-                        text = $"{contexto}\n\nPregunta:\n{request.Question}"
+                        text = $"{contexto}\n\nPregunta del usuario:\n{request.Question}"
                     }
                 }
             }
@@ -124,7 +109,7 @@ Responde siempre de forma breve, clara y periodística.
     var client = httpClientFactory.CreateClient();
 
     var url =
-        $"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key={apiKey}";
+        $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={apiKey}";
 
     var response = await client.PostAsync(
         url,
@@ -140,7 +125,7 @@ Responde siempre de forma breve, clara y periodística.
     {
         return Results.BadRequest(new
         {
-            answer = json
+            answer = "No pude conectarme correctamente con Gemini. Revisa la API Key o el modelo configurado."
         });
     }
 
@@ -155,9 +140,8 @@ Responde siempre de forma breve, clara y periodística.
 
     return Results.Ok(new
     {
-        answer = respuesta
+        answer = respuesta ?? "No pude generar una respuesta."
     });
-
 });
 
 app.Run();
