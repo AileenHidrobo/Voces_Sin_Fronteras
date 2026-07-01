@@ -3,22 +3,24 @@ using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("Angular", policy =>
-        policy.WithOrigins(
-            "http://localhost:4200",
-            "https://voces-sin-fronteras.onrender.com"
-        )
-        .AllowAnyHeader()
-        .AllowAnyMethod());
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
 
 builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
-app.UseCors("Angular");
+// Habilitar CORS
+app.UseCors();
 
 app.MapPost("/api/chat", async (
     ChatRequest request,
@@ -41,9 +43,10 @@ Eres la inteligencia artificial del reportaje multimedia "Voces Sin Fronteras".
 Solo puedes responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana.
 
 Si el usuario pregunta cualquier otra cosa responde únicamente:
+
 "Solo puedo responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana."
 
-Información del reportaje:
+Información del reportaje
 
 Título:
 La migración de jóvenes ecuatorianos: ¿Irse o quedarse?
@@ -81,10 +84,13 @@ El reportaje contiene:
 - Audios
 - Galería fotográfica
 - Multimedia
-- Fuentes
 
 Fuentes:
-INEC, OIM, ACNUR, BID y Cancillería del Ecuador.
+INEC
+OIM
+ACNUR
+BID
+Cancillería del Ecuador
 
 Responde siempre de forma breve, clara y periodística.
 """;
@@ -99,7 +105,7 @@ Responde siempre de forma breve, clara y periodística.
                 {
                     new
                     {
-                        text = $"{contexto}\n\nPregunta del usuario:\n{request.Question}"
+                        text = $"{contexto}\n\nPregunta:\n{request.Question}"
                     }
                 }
             }
@@ -116,8 +122,7 @@ Responde siempre de forma breve, clara y periodística.
         new StringContent(
             JsonSerializer.Serialize(body),
             Encoding.UTF8,
-            "application/json")
-    );
+            "application/json"));
 
     var json = await response.Content.ReadAsStringAsync();
 
@@ -125,7 +130,7 @@ Responde siempre de forma breve, clara y periodística.
     {
         return Results.BadRequest(new
         {
-            answer = "No pude conectarme correctamente con Gemini. Revisa la API Key o el modelo configurado."
+            answer = json
         });
     }
 
@@ -140,7 +145,7 @@ Responde siempre de forma breve, clara y periodística.
 
     return Results.Ok(new
     {
-        answer = respuesta ?? "No pude generar una respuesta."
+        answer = respuesta
     });
 });
 
