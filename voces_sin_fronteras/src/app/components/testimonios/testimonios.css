@@ -1,0 +1,128 @@
+.stories-section {
+  background: linear-gradient(180deg, #111827, #0D1117);
+  padding: 100px 70px;
+}
+
+.stories-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 55px;
+}
+
+.section-tag {
+  display: inline-block;
+  color: #a78bfa;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  font-size: clamp(32px, 4vw, 52px);
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+.section-header p {
+  color: #d1d5db;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+
+.story-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  align-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 26px;
+  padding: 24px;
+  transition: 0.3s;
+}
+
+.story-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(167,139,250,0.5);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+}
+
+.story-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-meta {
+  display: inline-block;
+  color: #a78bfa;
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.story-content h3 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.story-content p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.story-content a {
+  color: #c4b5fd;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.story-content a:hover {
+  color: white;
+}
+
+@media (max-width: 950px) {
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .stories-section {
+    padding: 70px 25px;
+  }
+
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+
+  .story-photo {
+    width: 100%;
+    height: 240px;
+  }
+}

@@ -1,0 +1,158 @@
+<section class="media-section" id="multimedia">
+  <div class="media-container">
+
+    <div class="section-header">
+      <span class="section-tag">Multimedia</span>
+      <h2>Videos, audios e imágenes del reportaje</h2>
+      <p>
+        Una experiencia visual y sonora para comprender la migración
+        juvenil ecuatoriana desde las voces de sus protagonistas.
+      </p>
+    </div>
+
+    <div class="video-grid">
+
+      <article class="video-card">
+        <div class="video-box">
+          <iframe
+            src="https://www.youtube.com/embed/JCg0L6D05ok"
+            title="Entrevista 1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-info">
+          <span>Entrevista 1</span>
+          <h3>Testimonio sobre migración juvenil</h3>
+          <p>
+            Entrevista realizada para conocer las motivaciones,
+            experiencias y desafíos de la migración juvenil.
+          </p>
+        </div>
+      </article>
+
+      <article class="video-card">
+        <div class="video-box">
+          <iframe
+            src="https://www.youtube.com/embed/WfINRqgX3MY"
+            title="Entrevista 2"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-info">
+          <span>Entrevista 2</span>
+          <h3>Testimonio sobre migración juvenil</h3>
+          <p>
+            Segunda entrevista del reportaje sobre experiencias y perspectivas
+            relacionadas con la migración.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="media-grid">
+
+      <article class="media-card gallery">
+
+        <div class="mini-gallery">
+
+          <button class="mini-arrow left" (click)="previousGallery()">‹</button>
+
+          <div class="mini-gallery-media">
+            <img
+              *ngIf="currentGalleryItem.tipo === 'imagen'"
+              [src]="currentGalleryItem.archivo"
+              [alt]="currentGalleryItem.titulo">
+
+            <video
+              *ngIf="currentGalleryItem.tipo === 'video'"
+              [src]="currentGalleryItem.archivo"
+              controls>
+            </video>
+          </div>
+
+          <button class="mini-arrow right" (click)="nextGallery()">›</button>
+
+        </div>
+
+        <h3>Galería fotográfica</h3>
+
+        <p>
+          Fotografías y registros audiovisuales del proceso de investigación,
+          lugares y momentos relacionados con el reportaje.
+        </p>
+
+        <div class="gallery-note">
+          <h4>{{ currentGalleryItem.titulo }}</h4>
+          <p>
+            Esta galería reúne imágenes y videos que acompañan las historias del
+            reportaje y muestran momentos vinculados a la migración juvenil.
+          </p>
+        </div>
+
+        <span class="gallery-counter">
+          {{ currentGalleryIndex + 1 }} / {{ galleryItems.length }}
+        </span>
+
+      </article>
+
+      <article class="media-card audio">
+
+        <div class="audio-icon">🎧</div>
+
+        <h3>Audios testimoniales</h3>
+
+        <p>
+          Relatos enviados por personas que no pudieron grabar video,
+          pero compartieron su testimonio mediante audio.
+        </p>
+
+        <div class="audio-list">
+
+          <div class="audio-player-card">
+            <div class="audio-text">
+              <span>Entrevista 1</span>
+              <small>Audio testimonial</small>
+            </div>
+
+            <audio controls preload="metadata">
+              <source src="/audios/Entrevista1.ogg" type="audio/ogg">
+            </audio>
+          </div>
+
+          <div class="audio-player-card">
+            <div class="audio-text">
+              <span>Samanta S.</span>
+              <small>Entrevista 2 · Testimonio principal</small>
+            </div>
+
+            <audio controls preload="metadata">
+              <source src="/audios/Entrevista2.ogg" type="audio/ogg">
+            </audio>
+          </div>
+
+          <div class="audio-player-card">
+            <div class="audio-text">
+              <span>Entrevista 3</span>
+              <small>Audio testimonial</small>
+            </div>
+
+            <audio controls preload="metadata">
+              <source src="/audios/Entrevista3.ogg" type="audio/ogg">
+            </audio>
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>

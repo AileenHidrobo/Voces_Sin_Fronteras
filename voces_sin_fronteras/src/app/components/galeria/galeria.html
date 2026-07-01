@@ -1,0 +1,61 @@
+<section class="gallery-section" id="galeria">
+  <div class="gallery-container">
+
+    <div class="section-header">
+      <span class="section-tag">Galería fotográfica</span>
+      <h2>Imágenes y registros del reportaje</h2>
+      <p>
+        Fotografías y videos recopilados durante el proceso de investigación.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <article
+        class="gallery-item"
+        *ngFor="let item of items; let i = index"
+        (click)="openModal(i)">
+
+        <img
+          *ngIf="item.tipo === 'imagen'"
+          [src]="item.archivo"
+          [alt]="item.titulo">
+
+        <video
+          *ngIf="item.tipo === 'video'"
+          [src]="item.archivo"
+          muted>
+        </video>
+
+        <div class="gallery-overlay">
+          <span>{{ item.tipo === 'video' ? '▶ Video' : '📷 Foto' }}</span>
+          <h3>{{ item.titulo }}</h3>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<div class="lightbox" *ngIf="modalOpen">
+  <button class="close-btn" (click)="closeModal()">×</button>
+
+  <button class="nav-btn prev" (click)="previousItem()">‹</button>
+
+  <div class="lightbox-content">
+    <img
+      *ngIf="selectedItem.tipo === 'imagen'"
+      [src]="selectedItem.archivo"
+      [alt]="selectedItem.titulo">
+
+    <video
+      *ngIf="selectedItem.tipo === 'video'"
+      [src]="selectedItem.archivo"
+      controls
+      autoplay>
+    </video>
+
+    <h3>{{ selectedItem.titulo }}</h3>
+  </div>
+
+  <button class="nav-btn next" (click)="nextItem()">›</button>
+</div>

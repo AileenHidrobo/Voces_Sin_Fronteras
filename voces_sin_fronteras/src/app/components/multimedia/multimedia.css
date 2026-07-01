@@ -1,0 +1,293 @@
+.media-section {
+  background: linear-gradient(180deg, #0D1117, #111827);
+  padding: 90px 70px;
+}
+
+.media-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 45px;
+}
+
+.section-tag {
+  display: inline-block;
+  color: #a78bfa;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  color: #d1d5db;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.video-card,
+.media-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.video-card:hover,
+.media-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(167,139,250,0.5);
+  box-shadow: 0 15px 40px rgba(124,58,237,0.18);
+}
+
+.video-box {
+  background: #000;
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 260px;
+  display: block;
+  border: none;
+}
+
+.video-info {
+  padding: 24px;
+}
+
+.video-info span {
+  color: #a78bfa;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.video-info h3 {
+  color: white;
+  font-size: clamp(22px, 2.5vw, 30px);
+  line-height: 1.15;
+  margin: 12px 0;
+}
+
+.video-info p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 28px;
+  align-items: stretch;
+}
+
+.media-card {
+  padding: 24px;
+}
+
+.media-card h3 {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.media-card p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.mini-gallery {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  background: rgba(0,0,0,0.35);
+}
+
+.mini-gallery-media {
+  width: 100%;
+  height: 100%;
+}
+
+.mini-gallery-media img,
+.mini-gallery-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Para que el video no agrande la tarjeta */
+.mini-gallery-media video {
+  background: #000;
+}
+
+.mini-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(124,58,237,0.9);
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.mini-arrow.left {
+  left: 14px;
+}
+
+.mini-arrow.right {
+  right: 14px;
+}
+
+.gallery-note {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(167,139,250,0.22);
+}
+
+.gallery-note h4 {
+  color: white;
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.gallery-note p {
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.gallery-counter {
+  display: inline-block;
+  margin-top: 14px;
+  color: #a78bfa;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.audio-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: rgba(124,58,237,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 22px;
+}
+
+.audio-list {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.audio-player-card {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.audio-text {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.audio-text span {
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.audio-text small {
+  color: #a78bfa;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.audio-player-card audio {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .video-grid,
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-box iframe {
+    height: 260px;
+  }
+
+  .mini-gallery {
+    height: 260px;
+  }
+}
+
+@media (max-width: 650px) {
+  .media-section {
+    padding: 70px 25px;
+  }
+
+  .video-box iframe {
+    height: 220px;
+  }
+
+  .mini-gallery {
+    height: 220px;
+  }
+}
+blockquote{
+
+    margin:18px 0;
+
+    padding-left:18px;
+
+    border-left:4px solid #7c3aed;
+
+    color:#d8d8d8;
+
+    font-style:italic;
+
+    line-height:1.6;
+
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "tipo": "imagen",
+    "archivo": "/galeria/Imagen1.jpeg",
+    "titulo": "Proceso de investigación"
+  },
+  {
+    "tipo": "imagen",
+    "archivo": "/galeria/Imagen2.jpeg",
+    "titulo": "Trabajo de campo"
+  },
+  {
+    "tipo": "imagen",
+    "archivo": "/galeria/Imagen3.jpeg",
+    "titulo": "Registro fotográfico"
+  },
+  {
+    "tipo": "video",
+    "archivo": "/galeria/Video1.mp4",
+    "titulo": "Registro audiovisual"
+  },
+  {
+    "tipo": "video",
+    "archivo": "/galeria/Video2.mp4",
+    "titulo": "Cobertura en campo"
+  },
+  {
+    "tipo": "video",
+    "archivo": "/galeria/Video3.mp4",
+    "titulo": "Material complementario"
+  }
+]

@@ -1,0 +1,117 @@
+<button class="chat-toggle" (click)="toggleChat()">
+  {{ isOpen ? '✕' : '🤖' }}
+</button>
+
+<div class="floating-chat" [class.open]="isOpen">
+
+  <!-- HEADER -->
+
+  <div class="chat-header">
+    <div class="bot-icon">
+      🤖
+    </div>
+
+    <div>
+      <h3>IA del reportaje</h3>
+      <span>Voces Sin Fronteras</span>
+    </div>
+  </div>
+
+  <!-- MENSAJES -->
+
+  <div class="chat-messages" #messagesContainer>
+
+    <div
+      *ngFor="let message of messages"
+      class="message"
+      [ngClass]="{
+        'bot': message.sender === 'bot',
+        'user': message.sender === 'user',
+        'typing': message.sender === 'typing'
+      }">
+
+      {{ message.text }}
+
+    </div>
+
+    <!-- Preguntas rápidas -->
+
+    <div
+      class="quick-questions"
+      *ngIf="showQuickQuestions && !isLoading">
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('¿Por qué migran los jóvenes ecuatorianos?')">
+
+        ¿Por qué migran?
+
+      </button>
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('¿Cuáles son los principales destinos de migración?')">
+
+        Destinos
+
+      </button>
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('¿Qué estadísticas presenta el reportaje?')">
+
+        Estadísticas
+
+      </button>
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('¿Qué historias aparecen en el reportaje?')">
+
+        Historias
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- INPUT -->
+
+  <form
+    class="chat-input"
+    (ngSubmit)="sendMessage()">
+
+    <input
+
+      type="text"
+
+      name="question"
+
+      [(ngModel)]="userQuestion"
+
+      autocomplete="off"
+
+      [disabled]="isLoading"
+
+      placeholder="Pregúntame sobre el reportaje..." />
+
+    <button
+
+      type="submit"
+
+      [disabled]="isLoading">
+
+      <span *ngIf="!isLoading">
+        ➜
+      </span>
+
+      <span *ngIf="isLoading">
+        ...
+      </span>
+
+    </button>
+
+  </form>
+
+</div>
