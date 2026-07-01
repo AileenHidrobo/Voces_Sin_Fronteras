@@ -16,6 +16,7 @@ interface Message {
   styleUrl: './chat-ia.css',
 })
 export class ChatIa {
+
   @ViewChild('messagesContainer') messagesContainer!: ElementRef;
 
   constructor(
@@ -33,7 +34,7 @@ export class ChatIa {
   messages: Message[] = [
     {
       sender: 'bot',
-      text: '¡Hola! Soy la IA del reportaje Voces Sin Fronteras. Solo respondo preguntas sobre esta página.'
+      text: '¡Hola! Soy la IA del reportaje Voces Sin Fronteras. Solo respondo preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana.'
     }
   ];
 
@@ -64,6 +65,7 @@ export class ChatIa {
   }
 
   async sendMessage() {
+
     const question = this.userQuestion.trim();
 
     if (!question || this.isLoading) return;
@@ -76,6 +78,7 @@ export class ChatIa {
     this.userQuestion = '';
     this.showQuickQuestions = false;
     this.isLoading = true;
+
     this.updateView();
 
     this.messages.push({
@@ -86,14 +89,15 @@ export class ChatIa {
     this.updateView();
 
     try {
+
       const response: any = await firstValueFrom(
         this.http.post(this.apiUrl, { question })
       );
 
-      this.messages = this.messages.filter(message => message.sender !== 'typing');
+      this.messages = this.messages.filter(m => m.sender !== 'typing');
 
       const answer = this.cleanAnswer(
-        response.answer || 'No pude generar una respuesta.'
+        response.answer || 'No fue posible generar una respuesta.'
       );
 
       this.messages.push({
@@ -103,26 +107,57 @@ export class ChatIa {
 
       this.updateView();
 
-    } catch (error) {
-      this.messages = this.messages.filter(message => message.sender !== 'typing');
+    } catch (error: any) {
+
+      this.messages = this.messages.filter(m => m.sender !== 'typing');
+
+      let mensaje =
+        'Ocurrió un inconveniente al consultar la inteligencia artificial. Inténtalo nuevamente más tarde.';
+
+      if (error?.status === 429) {
+
+        mensaje =
+          'La inteligencia artificial ha alcanzado el límite diario de consultas disponible. Por favor, vuelve a intentarlo más tarde.';
+
+      } else if (error?.status === 400) {
+
+        mensaje =
+          'No fue posible procesar la consulta. Intenta formular la pregunta de otra manera.';
+
+      } else if (error?.status === 500) {
+
+        mensaje =
+          'La inteligencia artificial no se encuentra disponible en este momento. Inténtalo nuevamente en unos minutos.';
+
+      } else if (error?.status === 0) {
+
+        mensaje =
+          'No fue posible establecer conexión con el servidor. Verifica tu conexión a Internet e inténtalo nuevamente.';
+      }
 
       this.messages.push({
         sender: 'bot',
-        text: 'No pude obtener respuesta de la IA. Intenta nuevamente en unos segundos.'
+        text: mensaje
       });
 
       this.updateView();
 
     } finally {
+
       this.isLoading = false;
       this.updateView();
+
     }
+
   }
 
   askQuickQuestion(question: string) {
+
     if (this.isLoading) return;
 
     this.userQuestion = question;
     this.sendMessage();
+
   }
+
 }

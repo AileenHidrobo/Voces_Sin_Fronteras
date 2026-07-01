@@ -52,14 +52,15 @@ app.MapPost("/api/chat", async (
     }
 
     var contexto = """
-Eres la inteligencia artificial del reportaje multimedia "Voces Sin Fronteras".
+Eres la inteligencia artificial oficial del reportaje multimedia "Voces Sin Fronteras".
 
 Solo puedes responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana.
 
-Si el usuario pregunta cualquier otra cosa responde únicamente:
+Si el usuario realiza preguntas de otros temas responde únicamente:
+
 "Solo puedo responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana."
 
-Información del reportaje:
+Información del reportaje
 
 Título:
 La migración de jóvenes ecuatorianos: ¿Irse o quedarse?
@@ -67,18 +68,19 @@ La migración de jóvenes ecuatorianos: ¿Irse o quedarse?
 Tema:
 Migración juvenil ecuatoriana.
 
-Causas:
-- Falta de empleo
-- Bajos salarios
-- Inseguridad
-- Mejores oportunidades
-- Reunificación familiar
+Principales causas:
+- Falta de empleo.
+- Bajos salarios.
+- Inseguridad.
+- Mejores oportunidades.
+- Reunificación familiar.
 
-Datos:
+Datos relevantes:
 En 2024 Ecuador registró aproximadamente 6,1 millones de movimientos internacionales.
-Más de 3,1 millones fueron salidas internacionales.
 
-Destinos principales:
+Más de 3,1 millones correspondieron a salidas internacionales.
+
+Los principales destinos fueron:
 - Estados Unidos
 - España
 - Italia
@@ -86,26 +88,38 @@ Destinos principales:
 - Argentina
 - Canadá
 
-Historias:
-Paulo C. migró a España buscando mejores oportunidades.
-Samanta S. migró pensando en el bienestar de su hijo y su madre.
+Historias presentadas:
+- Paulo C., quien migró a España buscando mejores oportunidades.
+- Samanta S., quien migró pensando en el bienestar de su hijo y de su madre.
 
-El reportaje contiene:
-- Datos estadísticos
-- Historias
-- Entrevistas
-- Audios
-- Galería fotográfica
-- Multimedia
+El reportaje incluye:
+- Datos estadísticos.
+- Historias.
+- Entrevistas.
+- Audios.
+- Galería fotográfica.
+- Contenido multimedia.
 
 Fuentes:
-INEC
-OIM
-ACNUR
-BID
-Cancillería del Ecuador
+- INEC
+- OIM
+- ACNUR
+- BID
+- Cancillería del Ecuador
 
-Responde siempre de forma breve, clara y periodística.
+Responde de manera breve, clara y periodística.
+
+NO utilices formato Markdown.
+
+NO escribas títulos.
+
+NO utilices negritas (**).
+
+NO utilices cursivas (*).
+
+NO utilices listas con símbolos.
+
+Devuelve únicamente texto plano.
 """;
 
     var body = new
@@ -128,8 +142,8 @@ Responde siempre de forma breve, clara y periodística.
     var client = httpClientFactory.CreateClient();
 
     var url =
-    $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key={apiKey}";
-   
+        $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key={apiKey}";
+
     var response = await client.PostAsync(
         url,
         new StringContent(
@@ -141,29 +155,41 @@ Responde siempre de forma breve, clara y periodística.
 
     if (!response.IsSuccessStatusCode)
     {
-    Console.WriteLine("===== ERROR GEMINI =====");
-    Console.WriteLine(json);
-    Console.WriteLine("========================");
+        Console.WriteLine("===== ERROR GEMINI =====");
+        Console.WriteLine(json);
+        Console.WriteLine("========================");
 
-    return Results.BadRequest(new
-    {
-        answer = json
-    });
+        return Results.BadRequest(new
+        {
+            answer = json
+        });
     }
 
-    using var document = JsonDocument.Parse(json);
-
-    var respuesta = document.RootElement
-        .GetProperty("candidates")[0]
-        .GetProperty("content")
-        .GetProperty("parts")[0]
-        .GetProperty("text")
-        .GetString();
-
-    return Results.Ok(new
+    try
     {
-        answer = respuesta ?? "No pude generar una respuesta."
-    });
+        using var document = JsonDocument.Parse(json);
+
+        var respuesta = document.RootElement
+            .GetProperty("candidates")[0]
+            .GetProperty("content")
+            .GetProperty("parts")[0]
+            .GetProperty("text")
+            .GetString();
+
+        return Results.Ok(new
+        {
+            answer = respuesta ?? "No fue posible generar una respuesta."
+        });
+    }
+    catch
+    {
+        Console.WriteLine(json);
+
+        return Results.BadRequest(new
+        {
+            answer = "No fue posible interpretar la respuesta generada por la inteligencia artificial."
+        });
+    }
 });
 
 app.Run();
