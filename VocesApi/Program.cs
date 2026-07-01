@@ -57,10 +57,9 @@ Eres la inteligencia artificial oficial del reportaje multimedia "Voces Sin Fron
 Solo puedes responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana.
 
 Si el usuario realiza preguntas de otros temas responde únicamente:
-
 "Solo puedo responder preguntas relacionadas con este reportaje sobre migración juvenil ecuatoriana."
 
-Información del reportaje
+Información del reportaje:
 
 Título:
 La migración de jóvenes ecuatorianos: ¿Irse o quedarse?
@@ -69,56 +68,27 @@ Tema:
 Migración juvenil ecuatoriana.
 
 Principales causas:
-- Falta de empleo.
-- Bajos salarios.
-- Inseguridad.
-- Mejores oportunidades.
-- Reunificación familiar.
+Falta de empleo, bajos salarios, inseguridad, mejores oportunidades y reunificación familiar.
 
 Datos relevantes:
 En 2024 Ecuador registró aproximadamente 6,1 millones de movimientos internacionales.
-
 Más de 3,1 millones correspondieron a salidas internacionales.
 
-Los principales destinos fueron:
-- Estados Unidos
-- España
-- Italia
-- Chile
-- Argentina
-- Canadá
+Principales destinos:
+Estados Unidos, España, Italia, Chile, Argentina y Canadá.
 
 Historias presentadas:
-- Paulo C., quien migró a España buscando mejores oportunidades.
-- Samanta S., quien migró pensando en el bienestar de su hijo y de su madre.
+Paulo C. migró a España buscando mejores oportunidades.
+Samanta S. migró pensando en el bienestar de su hijo y de su madre.
 
-El reportaje incluye:
-- Datos estadísticos.
-- Historias.
-- Entrevistas.
-- Audios.
-- Galería fotográfica.
-- Contenido multimedia.
+El reportaje incluye datos estadísticos, historias, entrevistas, audios, galería fotográfica y contenido multimedia.
 
 Fuentes:
-- INEC
-- OIM
-- ACNUR
-- BID
-- Cancillería del Ecuador
+INEC, OIM, ACNUR, BID y Cancillería del Ecuador.
 
 Responde de manera breve, clara y periodística.
-
-NO utilices formato Markdown.
-
-NO escribas títulos.
-
-NO utilices negritas (**).
-
-NO utilices cursivas (*).
-
-NO utilices listas con símbolos.
-
+No utilices formato Markdown.
+No uses negritas, cursivas, títulos ni listas con símbolos.
 Devuelve únicamente texto plano.
 """;
 
@@ -130,10 +100,7 @@ Devuelve únicamente texto plano.
             {
                 parts = new[]
                 {
-                    new
-                    {
-                        text = $"{contexto}\n\nPregunta:\n{request.Question}"
-                    }
+                    new { text = $"{contexto}\n\nPregunta:\n{request.Question}" }
                 }
             }
         }
@@ -142,14 +109,12 @@ Devuelve únicamente texto plano.
     var client = httpClientFactory.CreateClient();
 
     var url =
-        $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key={apiKey}";
+        $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={apiKey}";
 
     var response = await client.PostAsync(
         url,
-        new StringContent(
-            JsonSerializer.Serialize(body),
-            Encoding.UTF8,
-            "application/json"));
+        new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json")
+    );
 
     var json = await response.Content.ReadAsStringAsync();
 
@@ -161,7 +126,7 @@ Devuelve únicamente texto plano.
 
         return Results.BadRequest(new
         {
-            answer = json
+            answer = "La inteligencia artificial alcanzó su límite de consultas o no está disponible en este momento. Inténtalo nuevamente más tarde."
         });
     }
 
@@ -181,9 +146,12 @@ Devuelve únicamente texto plano.
             answer = respuesta ?? "No fue posible generar una respuesta."
         });
     }
-    catch
+    catch (Exception ex)
     {
+        Console.WriteLine("===== ERROR AL LEER RESPUESTA =====");
+        Console.WriteLine(ex);
         Console.WriteLine(json);
+        Console.WriteLine("===================================");
 
         return Results.BadRequest(new
         {
