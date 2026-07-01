@@ -28,7 +28,7 @@ export class ChatIa {
   isLoading = false;
   showQuickQuestions = true;
 
-  apiUrl = 'http://localhost:5062/api/chat';
+  apiUrl = 'https://voces-api.onrender.com/api/chat';
 
   messages: Message[] = [
     {
