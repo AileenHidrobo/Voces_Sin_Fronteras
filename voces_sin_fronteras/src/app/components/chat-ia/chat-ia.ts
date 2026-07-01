@@ -97,7 +97,7 @@ export class ChatIa {
 
       this.messages.push({
         sender: 'bot',
-        text: 'No pude conectarme con Gemini. Revisa que el backend VocesApi esté encendido.'
+        text: 'No pude obtener respuesta de la IA. Revisa la conexión con la API.'
       });
 
       this.updateView();
