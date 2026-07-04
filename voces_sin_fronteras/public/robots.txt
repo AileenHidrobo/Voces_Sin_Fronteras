@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://voces-sin-fronteras.onrender.com/sitemap.xml
