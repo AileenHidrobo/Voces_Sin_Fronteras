@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VocesApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+458894274332f78b8671af8a540fa126cdf6d71a")]
 [assembly: System.Reflection.AssemblyProductAttribute("VocesApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VocesApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

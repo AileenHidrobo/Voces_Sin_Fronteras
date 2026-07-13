@@ -30,3 +30,4 @@ C:\Users\ESTUDIO\Desktop\Proyectos\Visual Code\Migracion\VocesApi\obj\Debug\net9
 C:\Users\ESTUDIO\Desktop\Proyectos\Visual Code\Migracion\VocesApi\obj\Debug\net9.0\VocesApi.pdb
 C:\Users\ESTUDIO\Desktop\Proyectos\Visual Code\Migracion\VocesApi\obj\Debug\net9.0\VocesApi.genruntimeconfig.cache
 C:\Users\ESTUDIO\Desktop\Proyectos\Visual Code\Migracion\VocesApi\obj\Debug\net9.0\ref\VocesApi.dll
+C:\Users\ESTUDIO\Desktop\Proyectos\Visual Code\Migracion\VocesApi\obj\Debug\net9.0\VocesApi.sourcelink.json
