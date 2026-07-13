@@ -19,6 +19,8 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .logo-icon {
@@ -57,11 +59,23 @@
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .menu a:hover {
   color: #a78bfa;
+}
+
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .nav-actions {
@@ -73,7 +87,7 @@
 .ia-btn {
   padding: 11px 18px;
   border-radius: 30px;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  background: linear-gradient(135deg,#7c3aed,#a855f7);
   color: white;
   text-decoration: none;
   font-size: 13px;
@@ -84,27 +98,81 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,.2);
   background: transparent;
   color: white;
   font-size: 22px;
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
-  .navbar {
-    padding: 0 25px;
+/* ===========================
+   CELULAR
+=========================== */
+
+@media (max-width:900px){
+
+  .navbar{
+    padding:0 18px;
   }
 
-  .menu {
-    display: none;
+  .logo h2{
+    font-size:15px;
   }
 
-  .logo h2 {
-    font-size: 15px;
+  .logo p{
+    font-size:9px;
   }
 
-  .ia-btn {
-    display: none;
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
+
+  .menu{
+
+    position:absolute;
+    top:78px;
+    right:15px;
+    left:auto;
+
+    width:180px;
+
+    display:none;
+    flex-direction:column;
+    gap:6px;
+
+    padding:10px;
+
+    border-radius:14px;
+
+    background:rgba(13,17,23,.98);
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.45);
+  }
+
+  .menu.active{
+    display:flex;
+  }
+
+  .menu a{
+    width:100%;
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:500;
+  }
+
+  .menu a:hover{
+    background:rgba(124,58,237,.18);
+    color:#fff;
+  }
+
+  .ia-btn{
+    display:none;
+  }
+
 }

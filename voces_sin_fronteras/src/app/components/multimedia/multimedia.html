@@ -66,13 +66,13 @@
 
           <div class="mini-gallery-media">
             <img
-              *ngIf="currentGalleryItem.tipo === 'imagen'"
-              [src]="currentGalleryItem.archivo"
-              [alt]="currentGalleryItem.titulo">
+              *ngIf="currentGalleryItem?.tipo === 'imagen'"
+              [src]="currentGalleryItem?.archivo"
+              [alt]="currentGalleryItem?.titulo || 'Imagen de la galería'">
 
             <video
-              *ngIf="currentGalleryItem.tipo === 'video'"
-              [src]="currentGalleryItem.archivo"
+              *ngIf="currentGalleryItem?.tipo === 'video'"
+              [src]="currentGalleryItem?.archivo"
               controls>
             </video>
           </div>
@@ -89,7 +89,7 @@
         </p>
 
         <div class="gallery-note">
-          <h4>{{ currentGalleryItem.titulo }}</h4>
+          <h4>{{ currentGalleryItem?.titulo || 'Galería del reportaje' }}</h4>
           <p>
             Esta galería reúne imágenes y videos que acompañan las historias del
             reportaje y muestran momentos vinculados a la migración juvenil.

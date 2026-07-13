@@ -1,20 +1,36 @@
 <header class="navbar">
-  <div class="logo">
+
+  <div
+    class="logo"
+    role="link"
+    tabindex="0"
+    (click)="goToInicio()"
+    (keydown.enter)="goToInicio()">
+
     <span class="logo-icon">V</span>
+
     <div>
       <h2>VOCES SIN FRONTERAS</h2>
       <p>Reportaje multimedia</p>
     </div>
+
   </div>
 
-  <nav class="menu">
-    <a href="#inicio">Inicio</a>
-    <a href="#contexto">Contexto</a>
-    <a href="#datos">Datos</a>
-    <a href="#historias">Historias</a>
-    <a href="#multimedia">Multimedia</a>
-    <a href="#fuentes">Fuentes</a>
-  </nav>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Abrir menú"
+    (click)="toggleMenu()">
+    ☰
+  </button>
 
+  <nav class="menu" [class.active]="menuOpen">
+    <a href="#inicio" (click)="closeMenu()">Inicio</a>
+    <a href="#contexto" (click)="closeMenu()">Contexto</a>
+    <a href="#datos" (click)="closeMenu()">Datos</a>
+    <a href="#historias" (click)="closeMenu()">Historias</a>
+    <a href="#multimedia" (click)="closeMenu()">Multimedia</a>
+    <a href="#fuentes" (click)="closeMenu()">Fuentes</a>
+  </nav>
 
 </header>

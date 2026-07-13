@@ -20,28 +20,39 @@ export class Multimedia implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.http.get<GalleryItem[]>('/data/galeria.json').subscribe({
       next: (data) => {
-        this.galleryItems = data;
+        this.galleryItems = Array.isArray(data) ? data : [];
+        this.currentGalleryIndex = 0;
       },
-      error: () => {
-        console.error('No se pudo cargar galeria.json');
+      error: (error) => {
+        console.error('No se pudo cargar galeria.json', error);
+        this.galleryItems = [];
       }
     });
   }
 
-  nextGallery() {
+  nextGallery(): void {
+    if (this.galleryItems.length === 0) return;
+
     this.currentGalleryIndex =
       (this.currentGalleryIndex + 1) % this.galleryItems.length;
   }
 
-  previousGallery() {
+  previousGallery(): void {
+    if (this.galleryItems.length === 0) return;
+
     this.currentGalleryIndex =
-      (this.currentGalleryIndex - 1 + this.galleryItems.length) % this.galleryItems.length;
+      (this.currentGalleryIndex - 1 + this.galleryItems.length) %
+      this.galleryItems.length;
   }
 
-  get currentGalleryItem() {
-    return this.galleryItems[this.currentGalleryIndex];
+  get currentGalleryItem(): GalleryItem | null {
+    if (this.galleryItems.length === 0) {
+      return null;
+    }
+
+    return this.galleryItems[this.currentGalleryIndex] ?? null;
   }
 }
