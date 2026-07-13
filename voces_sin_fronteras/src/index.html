@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-EC">
 <head>
   <meta charset="utf-8">
 
@@ -8,34 +8,67 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="Reportaje multimedia sobre la migración juvenil ecuatoriana. Conoce las causas, estadísticas, testimonios y entrevistas sobre la decisión de miles de jóvenes de migrar o quedarse en Ecuador.">
-  <meta name="keywords" content="Voces Sin Fronteras, migración juvenil ecuatoriana, migración Ecuador, jóvenes ecuatorianos, reportaje multimedia, irse o quedarse">
-  <meta name="author" content="Aileen Hidrobo">
-  <meta name="robots" content="index, follow">
+  <!-- SEO principal -->
+  <meta
+    name="description"
+    content="Reportaje multimedia sobre la migración juvenil ecuatoriana. Conoce las causas, estadísticas, testimonios y entrevistas sobre la decisión de miles de jóvenes de migrar o quedarse en Ecuador.">
 
+  <meta
+    name="keywords"
+    content="Voces Sin Fronteras, migración juvenil ecuatoriana, migración de jóvenes ecuatorianos, migración Ecuador, jóvenes ecuatorianos, reportaje multimedia, irse o quedarse">
+
+  <meta name="author" content="Aileen Hidrobo">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="application-name" content="Voces Sin Fronteras">
+  <meta name="theme-color" content="#7c3aed">
+
+  <!-- URL principal -->
+  <link rel="canonical" href="https://voces-sin-fronteras.onrender.com/">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Open Graph para Google, Facebook y WhatsApp -->
+  <meta property="og:site_name" content="Voces Sin Fronteras">
   <meta property="og:title" content="La migración de jóvenes ecuatorianos: ¿Irse o quedarse?">
-  <meta property="og:description" content="Voces Sin Fronteras: reportaje multimedia sobre la migración juvenil ecuatoriana con datos, entrevistas, testimonios, audios y fotografías.">
-  <meta property="og:image" content="https://voces-sin-fronteras.onrender.com/images/hero-migracion.png">
+  <meta
+    property="og:description"
+    content="Reportaje multimedia sobre la migración juvenil ecuatoriana con datos, entrevistas, testimonios, audios, videos y fotografías.">
+  <meta
+    property="og:image"
+    content="https://voces-sin-fronteras.onrender.com/images/hero-migracion.png">
+  <meta property="og:image:alt" content="Portada del reportaje Voces Sin Fronteras">
   <meta property="og:url" content="https://voces-sin-fronteras.onrender.com/">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="es_EC">
 
+  <!-- Datos del artículo -->
+  <meta property="article:published_time" content="2026-06-30">
+  <meta property="article:modified_time" content="2026-07-12">
+  <meta property="article:author" content="Aileen Hidrobo">
+  <meta property="article:section" content="Migración juvenil ecuatoriana">
+
+  <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="La migración de jóvenes ecuatorianos: ¿Irse o quedarse?">
-  <meta name="twitter:description" content="Reportaje multimedia sobre la migración juvenil ecuatoriana.">
-  <meta name="twitter:image" content="https://voces-sin-fronteras.onrender.com/images/hero-migracion.png">
-
-  <link rel="canonical" href="https://voces-sin-fronteras.onrender.com/">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta
+    name="twitter:description"
+    content="Reportaje multimedia sobre la migración juvenil ecuatoriana, sus causas, testimonios y principales datos.">
+  <meta
+    name="twitter:image"
+    content="https://voces-sin-fronteras.onrender.com/images/hero-migracion.png">
+  <meta name="twitter:image:alt" content="Portada del reportaje Voces Sin Fronteras">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EDZKMET0B"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
+
     function gtag() {
       dataLayer.push(arguments);
     }
+
     gtag('js', new Date());
+
     gtag('config', 'G-0EDZKMET0B', {
       send_page_view: true
     });
@@ -45,31 +78,69 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "La migración de jóvenes ecuatorianos: ¿Irse o quedarse?",
-    "alternativeHeadline": "Voces Sin Fronteras",
-    "description": "Reportaje multimedia sobre la migración juvenil ecuatoriana con estadísticas, entrevistas, testimonios y contenido audiovisual.",
-    "author": {
-      "@type": "Person",
-      "name": "Aileen Hidrobo"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Voces Sin Fronteras"
-    },
-    {
-      "@type": "Person",
-      "name": "James Yépez"
-    },
-    "datePublished": "2026-06-30",
-    "dateModified": "2026-07-04",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://voces-sin-fronteras.onrender.com/"
-    },
-    "image": "https://voces-sin-fronteras.onrender.com/images/hero-migracion.png",
-    "url": "https://voces-sin-fronteras.onrender.com/",
-    "inLanguage": "es-EC"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://voces-sin-fronteras.onrender.com/#website",
+        "url": "https://voces-sin-fronteras.onrender.com/",
+        "name": "Voces Sin Fronteras",
+        "alternateName": "Reportaje multimedia Voces Sin Fronteras",
+        "description": "Reportaje multimedia sobre la migración juvenil ecuatoriana.",
+        "inLanguage": "es-EC"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://voces-sin-fronteras.onrender.com/#organization",
+        "name": "Voces Sin Fronteras",
+        "url": "https://voces-sin-fronteras.onrender.com/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://voces-sin-fronteras.onrender.com/#author",
+        "name": "Aileen Hidrobo"
+      },
+      {
+        "@type": "Article",
+        "@id": "https://voces-sin-fronteras.onrender.com/#article",
+        "url": "https://voces-sin-fronteras.onrender.com/",
+        "headline": "La migración de jóvenes ecuatorianos: ¿Irse o quedarse?",
+        "alternativeHeadline": "Voces Sin Fronteras",
+        "description": "Reportaje multimedia sobre la migración juvenil ecuatoriana con estadísticas, entrevistas, testimonios, audios, videos y contenido fotográfico.",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://voces-sin-fronteras.onrender.com/images/hero-migracion.png"
+        },
+        "author": {
+          "@id": "https://voces-sin-fronteras.onrender.com/#author"
+        },
+        "publisher": {
+          "@id": "https://voces-sin-fronteras.onrender.com/#organization"
+        },
+        "datePublished": "2026-06-30",
+        "dateModified": "2026-07-12",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://voces-sin-fronteras.onrender.com/"
+        },
+        "isPartOf": {
+          "@id": "https://voces-sin-fronteras.onrender.com/#website"
+        },
+        "about": [
+          "Migración juvenil ecuatoriana",
+          "Migración de jóvenes ecuatorianos",
+          "Causas de la migración",
+          "Testimonios de migrantes"
+        ],
+        "keywords": [
+          "migración juvenil ecuatoriana",
+          "migración de jóvenes ecuatorianos",
+          "Voces Sin Fronteras",
+          "irse o quedarse",
+          "reportaje multimedia"
+        ],
+        "inLanguage": "es-EC"
+      }
+    ]
   }
   </script>
 </head>
