@@ -76,6 +76,11 @@
   color: white;
   font-size: 24px;
   cursor: pointer;
+  transition: .3s;
+}
+
+.menu-toggle:hover {
+  background: rgba(124,58,237,.18);
 }
 
 .nav-actions {
@@ -115,6 +120,16 @@
     padding:0 18px;
   }
 
+  .logo{
+    gap:10px;
+  }
+
+  .logo-icon{
+    width:40px;
+    height:40px;
+    font-size:22px;
+  }
+
   .logo h2{
     font-size:15px;
   }
@@ -134,15 +149,14 @@
     position:absolute;
     top:78px;
     right:15px;
-    left:auto;
 
-    width:180px;
+    width:170px;
 
     display:none;
     flex-direction:column;
-    gap:6px;
+    gap:4px;
 
-    padding:10px;
+    padding:8px;
 
     border-radius:14px;
 
@@ -151,7 +165,7 @@
 
     border:1px solid rgba(255,255,255,.08);
 
-    box-shadow:0 12px 30px rgba(0,0,0,.45);
+    box-shadow:0 14px 35px rgba(0,0,0,.45);
   }
 
   .menu.active{
@@ -160,10 +174,11 @@
 
   .menu a{
     width:100%;
-    padding:9px 12px;
+    padding:10px 12px;
     border-radius:8px;
     font-size:14px;
     font-weight:500;
+    transition:.25s;
   }
 
   .menu a:hover{

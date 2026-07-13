@@ -20,6 +20,7 @@
     class="menu-toggle"
     type="button"
     aria-label="Abrir menú"
+    [attr.aria-expanded]="menuOpen"
     (click)="toggleMenu()">
     ☰
   </button>

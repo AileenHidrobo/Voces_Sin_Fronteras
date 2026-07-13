@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.css'
 })
 export class Navbar {
+
   menuOpen = false;
 
   toggleMenu(): void {
@@ -18,13 +19,20 @@ export class Navbar {
   }
 
   goToInicio(): void {
+
     this.closeMenu();
 
-    document
-      .getElementById('inicio')
-      ?.scrollIntoView({
+    const inicio = document.getElementById('inicio');
+
+    if (inicio) {
+      inicio.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
+
+      history.replaceState(null, '', '#inicio');
+    }
+
   }
+
 }
