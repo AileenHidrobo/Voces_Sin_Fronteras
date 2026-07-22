@@ -1,98 +1,206 @@
 <section class="media-section" id="multimedia">
   <div class="media-container">
 
+    <!-- Encabezado principal -->
     <div class="section-header">
       <span class="section-tag">Multimedia</span>
-      <h2>Videos, audios e imágenes del reportaje</h2>
+
+      <h2>
+        Historias, voces e imágenes que muestran la realidad de la migración
+      </h2>
+
       <p>
-        Una experiencia visual y sonora para comprender la migración
-        juvenil ecuatoriana desde las voces de sus protagonistas.
+        Esta sección reúne entrevistas en video, audios testimoniales y registros
+        del trabajo de campo realizado en España. Cada contenido permite
+        comprender la migración desde una perspectiva diferente: las razones
+        económicas, la búsqueda de un mejor futuro, la seguridad familiar y los
+        cambios que enfrentan quienes dejan su país.
+      </p>
+    </div>
+
+    <!-- =========================
+         ENTREVISTAS EN VIDEO
+    ========================== -->
+
+    <div class="media-subheader">
+      <span class="media-subtag">Entrevistas en video</span>
+
+      <h3>Relatos familiares sobre la decisión de migrar</h3>
+
+      <p>
+        Estas entrevistas presentan historias contadas desde la perspectiva de
+        familiares y personas cercanas a quienes vivieron el proceso migratorio.
+        Sus relatos permiten conocer cómo la falta de estabilidad económica y la
+        búsqueda de nuevas oportunidades influyen en la decisión de abandonar el
+        país.
       </p>
     </div>
 
     <div class="video-grid">
 
+      <!-- Entrevista Rafael -->
       <article class="video-card">
+
         <div class="video-box">
           <iframe
             src="https://www.youtube.com/embed/MioTVCxneTw"
-            title="Entrevista 1"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            title="Entrevista a Rafael Montúfar sobre la migración de un familiar"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
           </iframe>
         </div>
 
         <div class="video-info">
-          <span>Entrevista 1</span>
-          <h3>Testimonio sobre migración juvenil</h3>
-          <p>
-            Entrevista realizada para conocer las motivaciones,
-            experiencias y desafíos de la migración juvenil.
+
+          <span class="video-meta">
+            Entrevista 1 · Rafael Montúfar
+          </span>
+
+          <h3>
+            Migrar por necesidad económica y la búsqueda de un mejor futuro
+          </h3>
+
+          <p class="video-description">
+            Rafael Montúfar, relata desde la perspectiva
+            de una tercera persona la experiencia migratoria de un familiar
+            directo. Explica cómo las dificultades económicas y la necesidad de
+            construir un futuro más estable influyeron en la decisión de dejar su
+            país.
           </p>
+
+          <div class="video-reason">
+            <h4>¿Por qué ver esta entrevista?</h4>
+
+            <p>
+              Permite conocer cómo una decisión migratoria afecta no solo
+              a quien se marcha, sino también a su entorno familiar. Además,
+              muestra que la búsqueda de estabilidad económica es una causa
+              compartida por muchas familias latinoamericanas.
+            </p>
+          </div>
+
         </div>
+
       </article>
 
+      <!-- Entrevista David -->
       <article class="video-card">
+
         <div class="video-box">
           <iframe
             src="https://www.youtube.com/embed/ALsmhLqmIqM"
-            title="Entrevista 2"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            title="Entrevista a David Muñoz sobre la migración de dos jóvenes"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
           </iframe>
         </div>
 
         <div class="video-info">
-          <span>Entrevista 2</span>
-          <h3>Testimonio sobre migración juvenil</h3>
-          <p>
-            Segunda entrevista del reportaje sobre experiencias y perspectivas
-            relacionadas con la migración.
+
+          <span class="video-meta">
+            Entrevista 2 · David Muñoz
+          </span>
+
+          <h3>
+            Dos jóvenes frente a una misma decisión: dejar su país
+          </h3>
+
+          <p class="video-description">
+            David Muñoz, comparte desde la perspectiva de
+            un tercero la historia de dos jóvenes que decidieron migrar. Su
+            relato muestra cómo distintas experiencias pueden coincidir en una
+            misma necesidad: encontrar mejores oportunidades y comenzar una
+            nueva etapa fuera del país de origen.
           </p>
+
+          <div class="video-reason">
+            <h4>¿Por qué ver esta entrevista?</h4>
+
+            <p>
+              Permite comparar dos historias migratorias y comprender que
+              este fenómeno no es exclusivo de Ecuador. La migración juvenil
+              también forma parte de la realidad de otros países
+              latinoamericanos.
+            </p>
+          </div>
+
         </div>
+
       </article>
 
     </div>
 
+    <!-- =========================
+         GALERÍA Y AUDIOS
+    ========================== -->
+
     <div class="media-grid">
 
+      <!-- Galería -->
       <article class="media-card gallery">
+
+        <div class="media-card-header">
+          <span class="media-card-tag">Trabajo de campo</span>
+
+          <h3>La realidad de la migración en España</h3>
+
+          <p>
+            Esta galería reúne imágenes y registros audiovisuales obtenidos
+            durante el trabajo de campo realizado en España. El material muestra
+            espacios, situaciones y escenarios cotidianos que ayudan a
+            comprender el contexto en el que viven muchas personas migrantes.
+          </p>
+        </div>
 
         <div class="mini-gallery">
 
-          <button class="mini-arrow left" (click)="previousGallery()">‹</button>
+          <button
+            class="mini-arrow left"
+            type="button"
+            aria-label="Ver elemento anterior de la galería"
+            (click)="previousGallery()">
+            ‹
+          </button>
 
           <div class="mini-gallery-media">
+
             <img
               *ngIf="currentGalleryItem?.tipo === 'imagen'"
               [src]="currentGalleryItem?.archivo"
-              [alt]="currentGalleryItem?.titulo || 'Imagen de la galería'">
+              [alt]="currentGalleryItem?.titulo || 'Imagen del trabajo de campo sobre migración en España'">
 
             <video
               *ngIf="currentGalleryItem?.tipo === 'video'"
               [src]="currentGalleryItem?.archivo"
-              controls>
+              controls
+              preload="metadata">
             </video>
+
           </div>
 
-          <button class="mini-arrow right" (click)="nextGallery()">›</button>
+          <button
+            class="mini-arrow right"
+            type="button"
+            aria-label="Ver siguiente elemento de la galería"
+            (click)="nextGallery()">
+            ›
+          </button>
 
         </div>
 
-        <h3>Galería fotográfica</h3>
-
-        <p>
-          Fotografías y registros audiovisuales del proceso de investigación,
-          lugares y momentos relacionados con el reportaje.
-        </p>
-
         <div class="gallery-note">
-          <h4>{{ currentGalleryItem?.titulo || 'Galería del reportaje' }}</h4>
+          <h4>
+            {{ currentGalleryItem?.titulo || 'Trabajo de campo en España' }}
+          </h4>
+
           <p>
-            Esta galería reúne imágenes y videos que acompañan las historias del
-            reportaje y muestran momentos vinculados a la migración juvenil.
+            Este registro forma parte del material visual recopilado para mostrar
+            de manera directa algunos espacios y momentos relacionados con la
+            experiencia migratoria.
           </p>
         </div>
 
@@ -102,50 +210,129 @@
 
       </article>
 
+      <!-- Audios -->
       <article class="media-card audio">
 
-        <div class="audio-icon">🎧</div>
+        <div class="media-card-header">
+          <span class="media-card-tag">Testimonios en audio</span>
 
-        <h3>Audios testimoniales</h3>
+          <h3>Voces que cuentan la migración desde su propia experiencia</h3>
 
-        <p>
-          Relatos enviados por personas que no pudieron grabar video,
-          pero compartieron su testimonio mediante audio.
-        </p>
+          <p>
+            Los siguientes audios reúnen testimonios personales de quienes
+            vivieron el proceso migratorio. Cada historia permite comprender cómo
+            la familia, la economía, la inseguridad y la búsqueda de una vida más
+            estable influyen en la decisión de dejar Ecuador.
+          </p>
+        </div>
 
         <div class="audio-list">
 
+          <!-- Fernando -->
           <div class="audio-player-card">
-            <div class="audio-text">
-              <span>Entrevista 1</span>
-              <small>Audio testimonial</small>
+
+            <div class="audio-number">01</div>
+
+            <div class="audio-content">
+
+              <div class="audio-text">
+                <span>Fernando</span>
+
+                <h4>
+                  Migrar pensando en el futuro de sus hijas
+                </h4>
+
+                <p>
+                  Fernando vivía en Quito y decidió migrar buscando estabilidad
+                  económica y mejores condiciones de vida para él y sus hijas.
+                  Al principio pensaba trabajar algunos años y regresar a
+                  Ecuador, pero después de permanecer por un largo tiempo en
+                  España ya no considera volver.
+                </p>
+
+              </div>
+
+              <audio controls preload="metadata">
+                <source
+                  src="/audios/Entrevista1.ogg"
+                  type="audio/ogg">
+
+                Tu navegador no permite reproducir este audio.
+              </audio>
+
             </div>
 
-            <audio controls preload="metadata">
-              <source src="/audios/Entrevista1.ogg" type="audio/ogg">
-            </audio>
           </div>
 
+          <!-- Samanta -->
           <div class="audio-player-card">
-            <div class="audio-text">
-              <span>Samanta S.</span>
-              <small>Entrevista 2 · Testimonio principal</small>
+
+            <div class="audio-number">02</div>
+
+            <div class="audio-content">
+
+              <div class="audio-text">
+                <span>Samanta</span>
+
+                <h4>
+                  Una decisión por el bienestar y la seguridad de su hija
+                </h4>
+
+                <p>
+                  Samanta vivía en Quito y decidió migrar pensando principalmente
+                  en el bienestar de su hija. Explica que, aunque una persona se
+                  prepare profesionalmente, en Ecuador puede resultar difícil
+                  encontrar oportunidades laborales estables. La inseguridad
+                  también influyó en su decisión.
+                </p>
+
+              </div>
+
+              <audio controls preload="metadata">
+                <source
+                  src="/audios/Entrevista2.ogg"
+                  type="audio/ogg">
+
+                Tu navegador no permite reproducir este audio.
+              </audio>
+
             </div>
 
-            <audio controls preload="metadata">
-              <source src="/audios/Entrevista2.ogg" type="audio/ogg">
-            </audio>
           </div>
 
+          <!-- Yaniz -->
           <div class="audio-player-card">
-            <div class="audio-text">
-              <span>Entrevista 3</span>
-              <small>Audio testimonial</small>
+
+            <div class="audio-number">03</div>
+
+            <div class="audio-content">
+
+              <div class="audio-text">
+                <span>Yaniz</span>
+
+                <h4>
+                  Migrar junto a su madre para permanecer unidas
+                </h4>
+
+                <p>
+                  Yaniz es una niña que migró junto a su madre hacia España. Su
+                  historia refleja la experiencia de los hijos que forman parte
+                  de una decisión migratoria familiar y que deben adaptarse a un
+                  nuevo país, una nueva rutina y un entorno diferente.
+                </p>
+
+              </div>
+
+              <audio controls preload="metadata">
+                <source
+                  src="/audios/Entrevista3.ogg"
+                  type="audio/ogg">
+
+                Tu navegador no permite reproducir este audio.
+              </audio>
+
             </div>
 
-            <audio controls preload="metadata">
-              <source src="/audios/Entrevista3.ogg" type="audio/ogg">
-            </audio>
           </div>
 
         </div>
